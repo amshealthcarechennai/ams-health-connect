@@ -20,7 +20,7 @@ const services = [
     description: "Complete sales and professional installation of diagnostic equipment from leading manufacturers.",
     features: [
       "Siemens ABG & Urine Analysers",
-      "Vector Bio-Chemistry & Hematology systems",
+      "Vector Bio-Chemistry & Haematology systems",
       "Agappe POC and Acute Care solutions",
       "Randox Quality Controls",
       "Site preparation guidance",
@@ -55,8 +55,8 @@ const services = [
   },
   {
     icon: HeartPulse,
-    title: "Rapid Diagnostic Cards",
-    description: "Supply of rapid diagnostic cards for quick and accurate disease detection.",
+    title: "Rapid Cards",
+    description: "Supply of rapid cards for quick and accurate disease detection.",
     features: [
       "Dengue NS1, IgM/IgG",
       "Malaria Pf/Pv",

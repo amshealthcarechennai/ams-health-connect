@@ -24,14 +24,14 @@ const stats = [
 
 const productCategories = [
   {
-    title: "Siemens Diagnostics",
+    title: "Siemens Healthineers",
     description: "ABG Analysers & Urine Analysers for critical care and routine testing",
     icon: Microscope,
     href: "/products#siemens",
   },
   {
     title: "Vector Biotek",
-    description: "Bio-Chemistry and Hematology solutions for comprehensive lab testing",
+    description: "Bio-Chemistry and Haematology solutions for comprehensive lab testing",
     icon: FlaskConical,
     href: "/products#vector",
   },
