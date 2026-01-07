@@ -6,9 +6,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import AboutPage from "./pages/AboutPage";
 import ProductsPage from "./pages/ProductsPage";
+import RandoxProductsPage from "./pages/products/RandoxProductsPage";
+import AgappeProductsPage from "./pages/products/AgappeProductsPage";
+import KinDiagnosticsPage from "./pages/products/KinDiagnosticsPage";
+import InspireGenePage from "./pages/products/InspireGenePage";
 import ServicesPage from "./pages/ServicesPage";
-import TestimonialsPage from "./pages/TestimonialsPage";
-import ClientsPage from "./pages/ClientsPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 
@@ -24,9 +26,11 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/randox" element={<RandoxProductsPage />} />
+          <Route path="/products/agappe" element={<AgappeProductsPage />} />
+          <Route path="/products/kin-diagnostics" element={<KinDiagnosticsPage />} />
+          <Route path="/products/inspire-gene" element={<InspireGenePage />} />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/testimonials" element={<TestimonialsPage />} />
-          <Route path="/clients" element={<ClientsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
