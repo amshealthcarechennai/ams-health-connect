@@ -78,7 +78,7 @@ export default function ContactPage() {
                 <h2 className="font-heading text-2xl font-bold text-foreground mb-6">
                   Send Us a Message
                 </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                {/* <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -167,7 +167,77 @@ export default function ContactPage() {
                       </>
                     )}
                   </Button>
-                </form>
+                </form> */}
+               <form
+  action="https://formspree.io/f/mlggrvde"
+  method="POST"
+  className="space-y-6"
+>
+  {/* Row 1 */}
+  <div className="grid md:grid-cols-2 gap-4">
+    <div className="flex flex-col">
+      <label className="text-sm font-medium mb-2">Your Name *</label>
+      <input
+        type="text"
+        name="name"
+        required
+        className="h-12 px-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+
+    <div className="flex flex-col">
+      <label className="text-sm font-medium mb-2">Your Organization</label>
+      <input
+        type="text"
+        name="organization"
+        className="h-12 px-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+  </div>
+
+  {/* Row 2 */}
+  <div className="grid md:grid-cols-2 gap-4">
+    <div className="flex flex-col">
+      <label className="text-sm font-medium mb-2">Email Address *</label>
+      <input
+        type="email"
+        name="email"
+        required
+        className="h-12 px-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+
+    <div className="flex flex-col">
+      <label className="text-sm font-medium mb-2">Phone Number *</label>
+      <input
+        type="tel"
+        name="phone"
+        pattern="[0-9]{10}"
+        required
+        className="h-12 px-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+  </div>
+
+  {/* Message */}
+  <div className="flex flex-col">
+    <label className="text-sm font-medium mb-2">Message *</label>
+    <textarea
+      name="message"
+      rows={4}
+      required
+      className="px-3 py-2 rounded-md border border-input bg-background resize-none focus:outline-none focus:ring-2 focus:ring-primary"
+    />
+  </div>
+
+  {/* Submit */}
+  <button
+    type="submit"
+    className="w-full h-12 rounded-md bg-primary text-primary-foreground font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition"
+  >
+    Send Message
+  </button>
+</form>
               </CardContent>
             </Card>
 
