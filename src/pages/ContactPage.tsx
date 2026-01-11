@@ -23,27 +23,61 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const form = e.currentTarget;
+    const data = new FormData(form);
 
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We will get back to you soon.",
-    });
+    try {
 
-    setFormData({
-      name: "",
-      organization: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-    setIsSubmitting(false);
-  };
+
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        form.reset();          // ✅ clears form
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for contacting us. We will get back to you soon.",
+        });
+        //setSubmitted(true);    // ✅ success UI
+      } else {
+        // ❌ Server responded but with error
+        const data = await response.json().catch(() => null);
+
+        toast({
+          title: "Submission Failed",
+          description:
+            data?.error || "Unable to send message. Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      // ❌ Network / fetch error
+      toast({
+        title: "Network Error",
+        description: "Please check your internet connection and try again.",
+        variant: "destructive",
+      });
+    }
+
+  setFormData({
+    name: "",
+    organization: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  setIsSubmitting(false);
+};
 
   return (
     <Layout>
@@ -170,7 +204,7 @@ export default function ContactPage() {
                 </form> */}
                <form
   action="https://formspree.io/f/mlggrvde"
-  method="POST"
+  method="POST" onSubmit={handleSubmit}
   className="space-y-6"
 >
   {/* Row 1 */}
@@ -237,6 +271,12 @@ export default function ContactPage() {
   >
     Send Message
   </button>
+
+  {/* {submitted && (
+        <p className="text-green-600 text-center">
+          Message sent successfully.
+        </p>
+      )} */}
 </form>
               </CardContent>
             </Card>
