@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
+import logo from "@/assets/ams-healthcare-logo.jpeg";
 
 const quickLinks = [
   { href: "/about", label: "About Us" },
@@ -9,10 +10,10 @@ const quickLinks = [
 ];
 
 const productLinks = [
-  { href: "/products#siemens", label: "Siemens ABG Analysers" },
-  { href: "/products#vector", label: "Vector Biotek" },
-  { href: "/products#agappe", label: "Agappe POC" },
-  { href: "/products#randox", label: "Randox Controls" },
+  { href: "/products/randox", label: "Randox Products" },
+  { href: "/products/agappe", label: "Agappe Products" },
+  { href: "/products/kin-diagnostics", label: "Kin Diagnostics POC" },
+  { href: "/products/inspire-gene", label: "IG Pre-Analytics" },
 ];
 
 export default function Footer() {
@@ -24,9 +25,11 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-heading font-bold text-xl">A</span>
-              </div>
+              <img 
+                src={logo} 
+                alt="AMS Healthcare Logo" 
+                className="w-12 h-12 rounded-full object-cover bg-white"
+              />
               <div className="flex flex-col">
                 <span className="font-heading font-bold text-xl">AMS Healthcare</span>
                 <span className="text-xs text-primary-foreground/70">Diagnostic Excellence</span>

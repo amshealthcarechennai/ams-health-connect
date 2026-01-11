@@ -23,27 +23,61 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const form = e.currentTarget;
+    const data = new FormData(form);
 
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We will get back to you soon.",
-    });
+    try {
 
-    setFormData({
-      name: "",
-      organization: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-    setIsSubmitting(false);
-  };
+
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        form.reset();          // ✅ clears form
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for contacting us. We will get back to you soon.",
+        });
+        //setSubmitted(true);    // ✅ success UI
+      } else {
+        // ❌ Server responded but with error
+        const data = await response.json().catch(() => null);
+
+        toast({
+          title: "Submission Failed",
+          description:
+            data?.error || "Unable to send message. Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      // ❌ Network / fetch error
+      toast({
+        title: "Network Error",
+        description: "Please check your internet connection and try again.",
+        variant: "destructive",
+      });
+    }
+
+  setFormData({
+    name: "",
+    organization: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  setIsSubmitting(false);
+};
 
   return (
     <Layout>
@@ -78,7 +112,7 @@ export default function ContactPage() {
                 <h2 className="font-heading text-2xl font-bold text-foreground mb-6">
                   Send Us a Message
                 </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                {/* <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
@@ -167,7 +201,83 @@ export default function ContactPage() {
                       </>
                     )}
                   </Button>
-                </form>
+                </form> */}
+               <form
+  action="https://formspree.io/f/mlggrvde"
+  method="POST" onSubmit={handleSubmit}
+  className="space-y-6"
+>
+  {/* Row 1 */}
+  <div className="grid md:grid-cols-2 gap-4">
+    <div className="flex flex-col">
+      <label className="text-sm font-medium mb-2">Your Name *</label>
+      <input
+        type="text"
+        name="name"
+        required
+        className="h-12 px-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+
+    <div className="flex flex-col">
+      <label className="text-sm font-medium mb-2">Your Organization</label>
+      <input
+        type="text"
+        name="organization"
+        className="h-12 px-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+  </div>
+
+  {/* Row 2 */}
+  <div className="grid md:grid-cols-2 gap-4">
+    <div className="flex flex-col">
+      <label className="text-sm font-medium mb-2">Email Address *</label>
+      <input
+        type="email"
+        name="email"
+        required
+        className="h-12 px-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+
+    <div className="flex flex-col">
+      <label className="text-sm font-medium mb-2">Phone Number *</label>
+      <input
+        type="tel"
+        name="phone"
+        pattern="[0-9]{10}"
+        required
+        className="h-12 px-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+  </div>
+
+  {/* Message */}
+  <div className="flex flex-col">
+    <label className="text-sm font-medium mb-2">Message *</label>
+    <textarea
+      name="message"
+      rows={4}
+      required
+      className="px-3 py-2 rounded-md border border-input bg-background resize-none focus:outline-none focus:ring-2 focus:ring-primary"
+    />
+  </div>
+
+  {/* Submit */}
+  <button
+    type="submit"
+    className="w-full h-12 rounded-md bg-primary text-primary-foreground font-semibold flex items-center justify-center gap-2 hover:opacity-90 transition"
+  >
+    Send Message
+  </button>
+
+  {/* {submitted && (
+        <p className="text-green-600 text-center">
+          Message sent successfully.
+        </p>
+      )} */}
+</form>
               </CardContent>
             </Card>
 

@@ -1,22 +1,30 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/ams-healthcare-logo.jpeg";
+
+const productSubMenu = [
+  { href: "/products/randox", label: "Randox Products" },
+  { href: "/products/agappe", label: "Agappe Products" },
+  { href: "/products/kin-diagnostics", label: "Point of Care – Kin Diagnostics" },
+  { href: "/products/inspire-gene", label: "Pre-Analytics – IG Inspire Gene" },
+];
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
-  { href: "/products", label: "Products" },
+  { href: "/products", label: "Products", hasSubmenu: true },
   { href: "/services", label: "Services" },
-  { href: "/testimonials", label: "Testimonials" },
-  { href: "/clients", label: "Clients" },
   { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -29,7 +37,10 @@ export default function Header() {
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setIsMobileProductsOpen(false);
   }, [location.pathname]);
+
+  const isProductsActive = location.pathname.startsWith("/products");
 
   return (
     <>
@@ -65,9 +76,11 @@ export default function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl gradient-hero flex items-center justify-center">
-                <span className="text-primary-foreground font-heading font-bold text-xl">A</span>
-              </div>
+              <img 
+                src={logo} 
+                alt="AMS Healthcare Logo" 
+                className="w-14 h-14 rounded-full object-cover"
+              />
               <div className="flex flex-col">
                 <span className="font-heading font-bold text-xl text-foreground">AMS Healthcare</span>
                 <span className="text-xs text-muted-foreground">Diagnostic Excellence</span>
@@ -77,18 +90,45 @@ export default function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={cn(
-                    "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200",
-                    location.pathname === link.href
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  )}
+                <div 
+                  key={link.href} 
+                  className="relative"
+                  onMouseEnter={() => link.hasSubmenu && setIsProductsOpen(true)}
+                  onMouseLeave={() => link.hasSubmenu && setIsProductsOpen(false)}
                 >
-                  {link.label}
-                </Link>
+                  <Link
+                    to={link.href}
+                    className={cn(
+                      "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1",
+                      (link.hasSubmenu ? isProductsActive : location.pathname === link.href)
+                        ? "text-primary bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    )}
+                  >
+                    {link.label}
+                    {link.hasSubmenu && <ChevronDown className="w-4 h-4" />}
+                  </Link>
+                  
+                  {/* Products Dropdown */}
+                  {link.hasSubmenu && isProductsOpen && (
+                    <div className="absolute top-full left-0 mt-1 w-64 bg-card rounded-lg shadow-xl border py-2 z-50">
+                      {productSubMenu.map((item) => (
+                        <Link
+                          key={item.href}
+                          to={item.href}
+                          className={cn(
+                            "block px-4 py-2.5 text-sm transition-colors",
+                            location.pathname === item.href
+                              ? "text-primary bg-primary/10"
+                              : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                          )}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </nav>
 
@@ -125,18 +165,54 @@ export default function Header() {
         >
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-2">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className={cn(
-                  "px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200",
-                  location.pathname === link.href
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              <div key={link.href}>
+                {link.hasSubmenu ? (
+                  <>
+                    <button
+                      onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
+                      className={cn(
+                        "w-full px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 flex items-center justify-between",
+                        isProductsActive
+                          ? "text-primary bg-primary/10"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      )}
+                    >
+                      {link.label}
+                      <ChevronDown className={cn("w-4 h-4 transition-transform", isMobileProductsOpen && "rotate-180")} />
+                    </button>
+                    {isMobileProductsOpen && (
+                      <div className="ml-4 mt-1 space-y-1">
+                        {productSubMenu.map((item) => (
+                          <Link
+                            key={item.href}
+                            to={item.href}
+                            className={cn(
+                              "block px-4 py-2.5 rounded-lg text-sm transition-colors",
+                              location.pathname === item.href
+                                ? "text-primary bg-primary/10"
+                                : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                            )}
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className={cn(
+                      "block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200",
+                      location.pathname === link.href
+                        ? "text-primary bg-primary/10"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
                 )}
-              >
-                {link.label}
-              </Link>
+              </div>
             ))}
             <Link to="/contact" className="mt-2">
               <Button variant="default" className="w-full">

@@ -30,7 +30,7 @@ const testimonials = [
     name: "Dr. Lakshmi Narayanan",
     position: "Clinical Director",
     organization: "Anderson Diagnostics",
-    content: "The rapid diagnostic cards from AMS Healthcare have been invaluable for our quick turnaround requirements. Their product quality and reliability are unmatched in the market.",
+    content: "The rapid cards from AMS Healthcare have been invaluable for our quick turnaround requirements. Their product quality and reliability are unmatched in the market.",
     rating: 5,
   },
   {
@@ -74,7 +74,7 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Testimonials Grid */}
-      <section className="py-20 bg-background">
+      {/* <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
@@ -99,7 +99,7 @@ export default function TestimonialsPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Stats Section */}
       <section className="py-20 gradient-section">

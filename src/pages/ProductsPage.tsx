@@ -63,8 +63,8 @@ const productCategories = [
         link: "https://vector.thebeacongroup.co.in/products",
       },
       {
-        name: "Hematology Analyzers",
-        description: "Advanced hematology systems for complete blood count analysis and related testing.",
+        name: "Haematology Analyzers",
+        description: "Advanced haematology systems for complete blood count analysis and related testing.",
         features: [
           "3-part and 5-part differential",
           "High sample throughput",
@@ -79,7 +79,7 @@ const productCategories = [
   },
   {
     id: "rapid",
-    title: "Rapid Diagnostic Cards",
+    title: "Rapid Cards",
     icon: TestTube2,
     products: [
       {
