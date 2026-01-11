@@ -12,6 +12,14 @@ import unikonVchemNext from "@/assets/unikon-vchem-next.jpg";
 import unikonLyte5 from "@/assets/unikon-lyte-5.jpg";
 import unikonLyte3 from "@/assets/unikon-lyte-3.jpg";
 import unikon23s from "@/assets/unikon-23s.jpg";
+import unikon3 from "@/assets/unikon-3.jpg";
+import unikon5 from "@/assets/unikon-5.jpg";
+import unikon5Next from "@/assets/unikon-5-next.jpg";
+import maglumi800 from "@/assets/maglumi-800.jpg";
+import maglumi2000 from "@/assets/maglumi-2000.jpg";
+import maglumiX3 from "@/assets/maglumi-x3.jpg";
+import maglumiX6 from "@/assets/maglumi-x6.jpg";
+import maglumiX8 from "@/assets/maglumi-x8.jpg";
 
 const categories = [
   { id: "biochemistry", label: "Biochemistry", icon: Beaker },
@@ -74,7 +82,7 @@ const biochemistryProducts = [
 const haematologyProducts = [
   {
     name: "UNIKON 5 NEXT",
-    image: null,
+    image: unikon5Next,
     description: "High-end hematology analyzer offering 49 parameters including Retic analysis.",
     features: [
       "49 parameters with Retic analysis",
@@ -86,7 +94,7 @@ const haematologyProducts = [
   },
   {
     name: "UNIKON 5",
-    image: null,
+    image: unikon5,
     description: "Compact 5-PDA hematology analyzer with Tri-Angle Laser Scatter technology.",
     features: [
       "5-part differential analysis",
@@ -98,7 +106,7 @@ const haematologyProducts = [
   },
   {
     name: "UNIKON 3",
-    image: null,
+    image: unikon3,
     description: "Routine hematology analyzer with throughput up to 80 samples/hour.",
     features: [
       "80 samples/hour throughput",
@@ -194,7 +202,7 @@ const poctProducts = [
 const immunoassayProducts = [
   {
     name: "MAGLUMI X8",
-    image: null,
+    image: maglumiX8,
     description: "High-throughput CLIA analyzer delivering up to 600 tests/hour.",
     features: [
       "600 tests/hour throughput",
@@ -206,7 +214,7 @@ const immunoassayProducts = [
   },
   {
     name: "MAGLUMI X6",
-    image: null,
+    image: maglumiX6,
     description: "Fully automated CLIA system offering walk-away testing.",
     features: [
       "Walk-away testing",
@@ -218,7 +226,7 @@ const immunoassayProducts = [
   },
   {
     name: "MAGLUMI X3",
-    image: null,
+    image: maglumiX3,
     description: "Space-efficient CLIA analyzer with continuous loading.",
     features: [
       "Continuous sample loading",
@@ -230,7 +238,7 @@ const immunoassayProducts = [
   },
   {
     name: "MAGLUMI 2000",
-    image: null,
+    image: maglumi2000,
     description: "High-sensitivity CLIA system with 24-hour ready operation.",
     features: [
       "24-hour ready operation",
@@ -242,7 +250,7 @@ const immunoassayProducts = [
   },
   {
     name: "MAGLUMI 800",
-    image: null,
+    image: maglumi800,
     description: "Compact CLIA analyzer for small-to-medium laboratories.",
     features: [
       "Extensive test menu",
