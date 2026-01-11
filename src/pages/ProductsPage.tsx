@@ -3,184 +3,78 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
+  ArrowRight,
   Microscope,
   FlaskConical,
-  TestTube2,
   HeartPulse,
   Shield,
-  ArrowRight,
-  ExternalLink,
+  Zap,
+  Syringe,
 } from "lucide-react";
+import siemensLogo from "@/assets/siemens-logo.png";
+import randoxLogo from "@/assets/randox-logo.png";
+import agappeLogo from "@/assets/agappe-logo.png";
 
 const productCategories = [
   {
     id: "siemens",
     title: "Siemens Products",
     icon: Microscope,
-    products: [
-      {
-        name: "Siemens ePOC Blood Gas Analyzer",
-        description: "Handheld, wireless blood gas testing system designed for point-of-care environments. Delivers lab-quality results in critical care, ICU, emergency, and operating room settings.",
-        features: [
-          "Results in under 1 minute",
-          "Wireless connectivity",
-          "Comprehensive test menu",
-          "Portable and easy to use",
-          "Integrated quality management",
-        ],
-        applications: "ICU, Emergency, OR, NICU, Transport Medicine",
-        link: "https://www.siemens-healthineers.com/en-in/blood-gas/blood-gas-systems/epoc-nxs",
-      },
-      {
-        name: "Siemens Urine Analyzer",
-        description: "Advanced urine analysis solutions for routine and specialized testing in clinical laboratories.",
-        features: [
-          "High throughput testing",
-          "Automated workflow",
-          "Accurate results",
-          "Easy maintenance",
-        ],
-        applications: "Clinical Laboratories, Hospital Labs, Diagnostic Centers",
-      },
-    ],
+    logo: siemensLogo,
+    description: "World-class diagnostic solutions from Siemens Healthineers including Blood Gas Analyzers and Urine Analyzers for critical care and routine laboratory testing.",
+    href: "/products/siemens",
+    highlights: ["ePOC Blood Gas Analyzer", "Urine Analyzer – CLINITEK Status+"],
+    color: "primary"
   },
   {
-    id: "vector",
-    title: "Vector Biotek Products",
+    id: "vector-biotek",
+    title: "Vector BioTek Products",
     icon: FlaskConical,
-    products: [
-      {
-        name: "Bio-Chemistry Analyzers",
-        description: "Comprehensive biochemistry solutions for clinical chemistry testing, including fully automated and semi-automated analyzers.",
-        features: [
-          "Wide range of parameters",
-          "High precision and accuracy",
-          "User-friendly interface",
-          "Low maintenance",
-          "Quality reagents available",
-        ],
-        applications: "Hospital Labs, Diagnostic Centers, Research Labs",
-        link: "https://vector.thebeacongroup.co.in/products",
-      },
-      {
-        name: "Haematology Analyzers",
-        description: "Advanced haematology systems for complete blood count analysis and related testing.",
-        features: [
-          "3-part and 5-part differential",
-          "High sample throughput",
-          "Compact design",
-          "Easy operation",
-          "Reliable results",
-        ],
-        applications: "Hospital Labs, Clinics, Blood Banks",
-        link: "https://vector.thebeacongroup.co.in/products",
-      },
-    ],
+    logo: null,
+    description: "Comprehensive acute care solutions including biochemistry, electrolyte, haematology, and immunoassay analyzers designed for laboratories of all sizes.",
+    href: "/products/vector-biotek",
+    highlights: ["Biochemistry Analyzers", "Haematology Analyzers", "Electrolyte Analyzers", "Immunoassay Systems"],
+    color: "secondary"
   },
   {
-    id: "rapid",
-    title: "Rapid Cards",
-    icon: TestTube2,
-    products: [
-      {
-        name: "Infectious Disease Rapid Tests",
-        description: "Quick and accurate rapid diagnostic cards for detection of various infectious diseases.",
-        features: [
-          "Results in 10-15 minutes",
-          "No equipment required",
-          "Easy to use",
-          "Room temperature storage",
-          "High sensitivity & specificity",
-        ],
-        tests: [
-          "Dengue NS1, IgM/IgG",
-          "Malaria Pf/Pv",
-          "HIV 1/2 Antibody",
-          "HCV Antibody",
-          "HBsAg",
-          "Typhoid IgM/IgG",
-        ],
-        applications: "Hospitals, PHCs, Clinics, Emergency Departments",
-      },
-    ],
+    id: "randox",
+    title: "Randox Products",
+    icon: Shield,
+    logo: randoxLogo,
+    description: "Industry-leading quality control, external quality assessment (EQA), and diagnostic reagent solutions for clinical laboratories worldwide.",
+    href: "/products/randox",
+    highlights: ["Quality Control", "External Quality Assessment (EQA)", "Diagnostic Reagents"],
+    color: "primary"
   },
   {
     id: "agappe",
     title: "Agappe Products",
     icon: HeartPulse,
-    products: [
-      {
-        name: "Point-of-Care Solutions",
-        description: "Comprehensive POC testing solutions for rapid, accurate diagnostics at the patient's bedside.",
-        features: [
-          "Cardiac markers",
-          "Diabetes management",
-          "Coagulation testing",
-          "Critical care parameters",
-          "Easy-to-use devices",
-        ],
-        applications: "ICU, Emergency, Cardiology, Diabetes Clinics",
-        link: "https://www.agappe.com/in/point-of-care-testing.html",
-      },
-      {
-        name: "Acute Care Solutions",
-        description: "Advanced acute care testing systems for rapid critical care diagnostics.",
-        features: [
-          "Blood gas analysis",
-          "Electrolyte testing",
-          "Metabolite panels",
-          "Compact systems",
-          "Quick turnaround time",
-        ],
-        applications: "ICU, OR, Emergency, NICU",
-        link: "https://www.agappe.com/in/point-of-care-testing.html",
-      },
-    ],
+    logo: agappeLogo,
+    description: "Point-of-care and acute care solutions featuring advanced analyzers for cardiac markers, diabetes management, and critical care testing.",
+    href: "/products/agappe",
+    highlights: ["Mispa Revo", "PATHFAST", "Mispa A1C", "Mispa HbX"],
+    color: "secondary"
   },
   {
-    id: "randox",
-    title: "Randox Controls",
-    icon: Shield,
-    products: [
-      {
-        name: "Quality Controls",
-        description: "Comprehensive quality control solutions for clinical laboratories ensuring accuracy and reliability of test results.",
-        features: [
-          "Multi-analyte controls",
-          "Wide range of parameters",
-          "Stable and consistent",
-          "Long shelf life",
-          "Global traceability",
-        ],
-        applications: "All Clinical Laboratories",
-        link: "https://www.randox.com/",
-      },
-      {
-        name: "EQA Programs",
-        description: "External Quality Assessment programs for laboratory proficiency testing and accreditation compliance.",
-        features: [
-          "Comprehensive coverage",
-          "Regular assessment cycles",
-          "Detailed reports",
-          "Peer comparison",
-          "Accreditation support",
-        ],
-        applications: "NABL Accredited Labs, Hospital Labs",
-        link: "https://www.randox.com/",
-      },
-      {
-        name: "Reagents",
-        description: "High-quality reagents for clinical chemistry, immunoassay, and specialized testing.",
-        features: [
-          "High purity",
-          "Consistent performance",
-          "Wide compatibility",
-          "Competitive pricing",
-        ],
-        applications: "Clinical Chemistry Labs, Immunology Labs",
-        link: "https://www.randox.com/",
-      },
-    ],
+    id: "kin-diagnostics",
+    title: "Point of Care – Kin Diagnostics (Swiftest)",
+    icon: Zap,
+    logo: null,
+    description: "Innovative point-of-care testing solutions from Kin Diagnostics including immunofluorescence readers and dry clinical chemistry analyzers.",
+    href: "/products/kin-diagnostics",
+    highlights: ["iChroma II", "Swiftest Dry Chemistry Analyzer"],
+    color: "primary"
+  },
+  {
+    id: "inspire-gene",
+    title: "Pre-Analytics – IG Inspire Gene",
+    icon: Syringe,
+    logo: null,
+    description: "Premium pre-analytical solutions for arterial blood gas sample collection ensuring accurate and reliable diagnostic results.",
+    href: "/products/inspire-gene",
+    highlights: ["IG Artery ABG Syringes"],
+    color: "secondary"
   },
 ];
 
@@ -208,91 +102,74 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Product Categories */}
-      {productCategories.map((category, categoryIndex) => (
-        <section
-          key={category.id}
-          id={category.id}
-          className={`py-20 ${categoryIndex % 2 === 0 ? "bg-background" : "gradient-section"}`}
-        >
-          <div className="container mx-auto px-4">
-            {/* Category Header */}
-            <div className="flex items-center gap-4 mb-12">
-              <div className="w-16 h-16 rounded-xl bg-primary flex items-center justify-center">
-                <category.icon className="w-8 h-8 text-primary-foreground" />
-              </div>
-              <div>
-                <h2 className="font-heading text-3xl font-bold text-foreground">
-                  {category.title}
-                </h2>
-              </div>
-            </div>
-
-            {/* Products Grid */}
-            <div className="grid md:grid-cols-2 gap-8">
-              {category.products.map((product) => (
-                <Card key={product.name} className="h-full">
-                  <CardHeader>
-                    <CardTitle className="font-heading text-xl text-foreground">
-                      {product.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-muted-foreground">{product.description}</p>
-
-                    {product.features && (
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-2">Key Features</h4>
-                        <ul className="grid grid-cols-1 gap-2">
-                          {product.features.map((feature) => (
-                            <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {"tests" in product && product.tests && (
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-2">Available Tests</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {product.tests.map((test) => (
-                            <span
-                              key={test}
-                              className="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full"
-                            >
-                              {test}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="pt-4 flex flex-wrap gap-3">
-                      <Link to="/contact">
-                        <Button variant="default">
-                          Enquire Now
-                          <ArrowRight className="w-4 h-4" />
-                        </Button>
-                      </Link>
-                      {product.link && (
-                        <a href={product.link} target="_blank" rel="noopener noreferrer">
-                          <Button variant="outline">
-                            Learn More
-                            <ExternalLink className="w-4 h-4" />
-                          </Button>
-                        </a>
-                      )}
+      {/* Product Categories Grid */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {productCategories.map((category) => (
+              <Card 
+                key={category.id} 
+                className="group hover:shadow-xl transition-all duration-300 flex flex-col h-full border-t-4"
+                style={{ borderTopColor: category.color === 'primary' ? 'hsl(var(--primary))' : 'hsl(var(--secondary))' }}
+              >
+                <CardHeader className="pb-4">
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${
+                      category.color === 'primary' ? 'bg-primary/10' : 'bg-secondary/10'
+                    }`}>
+                      <category.icon className={`w-7 h-7 ${
+                        category.color === 'primary' ? 'text-primary' : 'text-secondary'
+                      }`} />
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                    {category.logo && (
+                      <img 
+                        src={category.logo} 
+                        alt={category.title} 
+                        className="h-8 object-contain"
+                      />
+                    )}
+                  </div>
+                  <CardTitle className="font-heading text-xl text-foreground group-hover:text-primary transition-colors">
+                    {category.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex-1 flex flex-col">
+                  <p className="text-muted-foreground text-sm mb-6">
+                    {category.description}
+                  </p>
+                  
+                  <div className="mb-6 flex-1">
+                    <h4 className="text-xs font-semibold text-foreground uppercase tracking-wider mb-3">
+                      Featured Products
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {category.highlights.map((item) => (
+                        <span 
+                          key={item} 
+                          className={`text-xs px-3 py-1.5 rounded-full ${
+                            category.color === 'primary' 
+                              ? 'bg-primary/10 text-primary' 
+                              : 'bg-secondary/10 text-secondary'
+                          }`}
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Link to={category.href} className="mt-auto">
+                    <Button variant="default" className="w-full gap-2 group-hover:gap-3 transition-all">
+                      View Products
+                      <ArrowRight className="w-4 h-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-20 gradient-hero">
