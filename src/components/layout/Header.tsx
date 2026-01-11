@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import logo from "@/assets/ams-healthcare-logo.jpeg";
 
 const productSubMenu = [
+  { href: "/products/siemens", label: "Siemens Products" },
+  { href: "/products/vector-biotek", label: "Vector BioTek Products" },
   { href: "/products/randox", label: "Randox Products" },
   { href: "/products/agappe", label: "Agappe Products" },
   { href: "/products/kin-diagnostics", label: "Point of Care – Kin Diagnostics" },

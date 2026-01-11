@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import AboutPage from "./pages/AboutPage";
 import ProductsPage from "./pages/ProductsPage";
+import SiemensProductsPage from "./pages/products/SiemensProductsPage";
+import VectorBioTekPage from "./pages/products/VectorBioTekPage";
 import RandoxProductsPage from "./pages/products/RandoxProductsPage";
 import AgappeProductsPage from "./pages/products/AgappeProductsPage";
 import KinDiagnosticsPage from "./pages/products/KinDiagnosticsPage";
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/siemens" element={<SiemensProductsPage />} />
+          <Route path="/products/vector-biotek" element={<VectorBioTekPage />} />
           <Route path="/products/randox" element={<RandoxProductsPage />} />
           <Route path="/products/agappe" element={<AgappeProductsPage />} />
           <Route path="/products/kin-diagnostics" element={<KinDiagnosticsPage />} />
