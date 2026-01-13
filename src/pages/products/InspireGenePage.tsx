@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, CheckCircle, Syringe, Shield, Target, Beaker } from "lucide-react";
 import igSyringe from "@/assets/ig-artery-syringe.jpeg";
+import igWorkflow from "@/assets/ig-workflow.jpeg";
 
 const advantages = [
   "Ensures high-quality Arterial blood Gas Samples",
@@ -196,26 +197,37 @@ export default function InspireGenePage() {
       </section>
 
       {/* Pre-Analytics Workflow */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-12 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl font-bold text-foreground mb-4">
+          <div className="text-center mb-8">
+            <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3">
               Pre-Analytics Workflow
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto text-sm">
               Follow these steps for optimal arterial blood gas sample collection
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-6">
+          {/* Workflow Image */}
+          <div className="max-w-4xl mx-auto mb-8">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <img 
+                src={igWorkflow}
+                alt="IG Artery ABG Syringe Pre-Analytics Workflow"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-4">
               {workflowSteps.map((item) => (
                 <Card key={item.step} className="relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-10 h-10 bg-primary flex items-center justify-center text-primary-foreground font-bold">
+                  <div className="absolute top-0 left-0 w-8 h-8 bg-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
                     {item.step}
                   </div>
-                  <CardContent className="p-6 pt-12">
-                    <p className="text-sm text-foreground">{item.text}</p>
+                  <CardContent className="p-4 pt-10">
+                    <p className="text-xs text-foreground">{item.text}</p>
                   </CardContent>
                 </Card>
               ))}
