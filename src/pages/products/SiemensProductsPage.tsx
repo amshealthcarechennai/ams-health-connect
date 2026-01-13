@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight, Check, Zap, Shield, Clock, Wifi, FileText, Phone } from "lucide-react";
-import siemensLogo from "@/assets/siemens-logo.png";
+import siemensLogo from "@/assets/siemens-logo.jpg";
 import epocImage from "@/assets/siemens-epoc.png";
 import urineAnalyzerImage from "@/assets/siemens-urine-analyzer.jpg";
 
@@ -11,9 +11,9 @@ const SiemensProductsPage = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative py-16 md:py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+      <section className="relative py-10 md:py-14 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
             <Link to="/products" className="hover:text-primary transition-colors">Products</Link>
@@ -21,17 +21,17 @@ const SiemensProductsPage = () => {
             <span className="text-foreground">Siemens Products</span>
           </div>
           
-          <div className="flex flex-col md:flex-row items-center gap-8">
+          <div className="flex flex-col md:flex-row items-center gap-6">
             <img 
               src={siemensLogo} 
               alt="Siemens Healthineers" 
-              className="h-16 md:h-20 object-contain"
+              className="h-12 md:h-16 object-contain"
             />
             <div>
-              <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              <h1 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3">
                 Siemens Products
               </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl">
+              <p className="text-base text-muted-foreground max-w-2xl">
                 World-class diagnostic solutions from Siemens Healthineers — advancing clinical excellence through innovation in blood gas analysis and urinalysis.
               </p>
             </div>

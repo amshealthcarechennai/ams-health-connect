@@ -20,6 +20,9 @@ import maglumi2000 from "@/assets/maglumi-2000.jpg";
 import maglumiX3 from "@/assets/maglumi-x3.jpg";
 import maglumiX6 from "@/assets/maglumi-x6.jpg";
 import maglumiX8 from "@/assets/maglumi-x8.jpg";
+import bc30 from "@/assets/bc-30.jpg";
+import unikonGh from "@/assets/unikon-gh.jpg";
+import unikonPrima from "@/assets/unikon-prima.jpg";
 
 const categories = [
   { id: "biochemistry", label: "Biochemistry", icon: Beaker },
@@ -130,7 +133,7 @@ const haematologyProducts = [
   },
   {
     name: "BC 30",
-    image: null,
+    image: bc30,
     description: "Space-saving 3-PDA hematology analyzer with double chamber accuracy.",
     features: [
       "3-part differential analysis",
@@ -145,7 +148,7 @@ const haematologyProducts = [
 const hba1cProducts = [
   {
     name: "UNIKON GH+",
-    image: null,
+    image: unikonGh,
     description: "IEC HPLC-based analyzer for rapid HbA1c testing with 130-second test time.",
     features: [
       "130-second test time",
@@ -187,7 +190,7 @@ const electrolyteProducts = [
 const poctProducts = [
   {
     name: "UNIKON PRIMA",
-    image: null,
+    image: unikonPrima,
     description: "Compact quantitative point-of-care analyzer with Android OS.",
     features: [
       "Android OS interface",
@@ -264,12 +267,12 @@ const immunoassayProducts = [
 
 const ProductCard = ({ product }: { product: typeof biochemistryProducts[0] }) => (
   <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-    <div className="h-48 bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center overflow-hidden">
+    <div className="h-44 bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center overflow-hidden">
       {product.image ? (
         <img 
           src={product.image} 
           alt={product.name}
-          className="w-full h-full object-contain p-4"
+          className="w-full h-full object-contain p-3"
         />
       ) : (
         <div className="text-6xl font-bold text-muted-foreground/20">
@@ -277,13 +280,13 @@ const ProductCard = ({ product }: { product: typeof biochemistryProducts[0] }) =
         </div>
       )}
     </div>
-    <CardHeader className="pb-2">
-      <CardTitle className="text-lg">{product.name}</CardTitle>
+    <CardHeader className="pb-1 pt-3">
+      <CardTitle className="text-base">{product.name}</CardTitle>
     </CardHeader>
-    <CardContent className="flex-1 flex flex-col">
-      <p className="text-muted-foreground text-sm mb-4">{product.description}</p>
-      <ul className="space-y-1.5 mb-6 flex-1">
-        {product.features.slice(0, 4).map((feature, i) => (
+    <CardContent className="flex-1 flex flex-col pt-1">
+      <p className="text-muted-foreground text-sm mb-3 line-clamp-2">{product.description}</p>
+      <ul className="space-y-1 mb-4 flex-1">
+        {product.features.slice(0, 3).map((feature, i) => (
           <li key={i} className="text-xs text-muted-foreground flex items-start gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0 mt-1.5"></span>
             {feature}
@@ -310,9 +313,9 @@ const VectorBioTekPage = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative py-16 md:py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+      <section className="relative py-10 md:py-14 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight className="w-4 h-4" />
             <Link to="/products" className="hover:text-primary transition-colors">Products</Link>
@@ -321,22 +324,22 @@ const VectorBioTekPage = () => {
           </div>
           
           <div>
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            <h1 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3">
               Vector BioTek Products
             </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl">
+            <p className="text-base text-muted-foreground max-w-3xl">
               Comprehensive acute care solutions including biochemistry, electrolyte, haematology, and immunoassay analyzers 
               designed for laboratories of all sizes.
             </p>
           </div>
 
           {/* Category Quick Links */}
-          <div className="flex flex-wrap gap-3 mt-8">
+          <div className="flex flex-wrap gap-2 mt-6">
             {categories.map((cat) => (
               <a 
                 key={cat.id} 
                 href={`#${cat.id}`}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border hover:border-primary hover:text-primary transition-colors"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border hover:border-primary hover:text-primary transition-colors text-sm"
               >
                 <cat.icon className="w-4 h-4" />
                 {cat.label}
@@ -347,21 +350,21 @@ const VectorBioTekPage = () => {
       </section>
 
       {/* Biochemistry Section */}
-      <section className="py-16 md:py-20" id="biochemistry">
+      <section className="py-10 md:py-14" id="biochemistry">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Beaker className="w-6 h-6 text-primary" />
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Beaker className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
+              <h2 className="font-heading text-xl md:text-2xl font-bold text-foreground">
                 Biochemistry Analyzers
               </h2>
-              <p className="text-muted-foreground">Clinical chemistry solutions for all laboratory needs</p>
+              <p className="text-muted-foreground text-sm">Clinical chemistry solutions for all laboratory needs</p>
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {biochemistryProducts.map((product, i) => (
               <ProductCard key={i} product={product} />
             ))}
@@ -370,21 +373,21 @@ const VectorBioTekPage = () => {
       </section>
 
       {/* Electrolyte Section */}
-      <section className="py-16 md:py-20 bg-muted/30" id="electrolyte">
+      <section className="py-10 md:py-14 bg-muted/30" id="electrolyte">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center">
-              <Droplet className="w-6 h-6 text-secondary" />
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center">
+              <Droplet className="w-5 h-5 text-secondary" />
             </div>
             <div>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
+              <h2 className="font-heading text-xl md:text-2xl font-bold text-foreground">
                 Electrolyte Analyzers
               </h2>
-              <p className="text-muted-foreground">Precise electrolyte measurement solutions</p>
+              <p className="text-muted-foreground text-sm">Precise electrolyte measurement solutions</p>
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {electrolyteProducts.map((product, i) => (
               <ProductCard key={i} product={product} />
             ))}
@@ -396,30 +399,30 @@ const VectorBioTekPage = () => {
       </section>
 
       {/* Haematology Section */}
-      <section className="py-16 md:py-20" id="haematology">
+      <section className="py-10 md:py-14" id="haematology">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Activity className="w-6 h-6 text-primary" />
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <Activity className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
+              <h2 className="font-heading text-xl md:text-2xl font-bold text-foreground">
                 Haematology Analyzers
               </h2>
-              <p className="text-muted-foreground">Complete blood count and differential analysis</p>
+              <p className="text-muted-foreground text-sm">Complete blood count and differential analysis</p>
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {haematologyProducts.map((product, i) => (
               <ProductCard key={i} product={product} />
             ))}
           </div>
 
           {/* HbA1c Analyzer */}
-          <div className="mt-12">
-            <h3 className="font-heading text-xl font-bold text-foreground mb-6">HbA1c Analyzer</h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-8">
+            <h3 className="font-heading text-lg font-bold text-foreground mb-4">HbA1c Analyzer</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {hba1cProducts.map((product, i) => (
                 <ProductCard key={i} product={product} />
               ))}
@@ -429,21 +432,21 @@ const VectorBioTekPage = () => {
       </section>
 
       {/* Immunoassay Section */}
-      <section className="py-16 md:py-20 bg-muted/30" id="immunoassay">
+      <section className="py-10 md:py-14 bg-muted/30" id="immunoassay">
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center">
-              <TestTube className="w-6 h-6 text-secondary" />
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center">
+              <TestTube className="w-5 h-5 text-secondary" />
             </div>
             <div>
-              <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
+              <h2 className="font-heading text-xl md:text-2xl font-bold text-foreground">
                 Immunoassay Systems
               </h2>
-              <p className="text-muted-foreground">CLIA-based immunoassay analyzers</p>
+              <p className="text-muted-foreground text-sm">CLIA-based immunoassay analyzers</p>
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {immunoassayProducts.map((product, i) => (
               <ProductCard key={i} product={product} />
             ))}
@@ -452,12 +455,12 @@ const VectorBioTekPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary">
+      <section className="py-12 bg-primary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-heading text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
+          <h2 className="font-heading text-xl md:text-2xl font-bold text-primary-foreground mb-3">
             Need Help Choosing the Right Analyzer?
           </h2>
-          <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+          <p className="text-primary-foreground/80 mb-6 max-w-2xl mx-auto text-sm">
             Our team of experts can help you select the perfect Vector BioTek solution for your laboratory requirements.
           </p>
           <Link to="/contact">

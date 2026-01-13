@@ -205,9 +205,10 @@ export default function ServicesPage() {
                     <span className="font-heading font-bold text-primary">04</span>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Comprehensive Coverage</h4>
+                    <h4 className="font-semibold text-foreground mb-1">Comprehensive Coverage Across Tamil Nadu</h4>
                     <p className="text-muted-foreground text-sm">
-                      From Chennai to Madurai, we provide service coverage across Tamil Nadu.
+                      We provide complete service coverage across all of Tamil Nadu, including major cities: 
+                      Chennai, Madurai, Coimbatore, Trichy, Thanjavur, Nagercoil, Salem, and Tirunelveli.
                     </p>
                   </div>
                 </div>
