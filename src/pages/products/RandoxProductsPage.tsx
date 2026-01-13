@@ -97,7 +97,7 @@ export default function RandoxProductsPage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1">
-              <img src={randoxLogo} alt="Randox" className="h-12 mb-6" />
+              {/* <img src={randoxLogo} alt="Randox" className="h-12 mb-6" /> */}
               <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
                 Randox Products
               </h1>

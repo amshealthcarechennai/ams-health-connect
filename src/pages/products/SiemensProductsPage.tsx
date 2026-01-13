@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ChevronRight, Check, Zap, Shield, Clock, Wifi, FileText, Phone } from "lucide-react";
-import siemensLogo from "@/assets/siemens-logo.jpg";
+import siemensLogo from "@/assets/siemens-logo.png";
 import epocImage from "@/assets/siemens-epoc.png";
 import urineAnalyzerImage from "@/assets/siemens-urine-analyzer.jpg";
 

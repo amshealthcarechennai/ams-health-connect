@@ -123,7 +123,7 @@ export default function AgappeProductsPage() {
       <section className="relative py-16 bg-gradient-to-br from-primary/5 via-background to-healthcare-light">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl">
-            <img src={agappeLogo} alt="Agappe" className="h-8 mb-6" />
+            {/* <img src={agappeLogo} alt="Agappe" className="h-8 mb-6" /> */}
             <h1 className="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
               Agappe Products
             </h1>
